@@ -1,32 +1,21 @@
-import React, { Component} from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-class App extends Component {
-  constructor(props) {
-      super(props);
+const App = ()=> {
+  const [ showImage, setShowImage ] = useState(false);
 
-      this.state = {
-        showImage: false
-      };
-    }
-
-  toggle = () => {
-    this.setState({
-      showImage: !this.state.showImage,
-    })
+  const toggle = () => {
+    setShowImage(!showImage)
   } 
 
-    
-  render() {
-
-    return (
+  return (
       <div className="App">
         <header className="App-header">
-        <button type="button" onClick={this.toggle}>
-          {this.state.showImage ? "esconder" : "mostrar" }
+        <button type="button" onClick={toggle}>
+          {showImage ? "esconder" : "mostrar" }
         </button>
-        {this.state.showImage && (
+        {showImage && (
           <img src={logo} className="App-logo" alt="logo" />
           )
         }
@@ -43,8 +32,7 @@ class App extends Component {
           </a>
         </header>
       </div>
-    );
-  }
+  );
 }
 
 export default App;
